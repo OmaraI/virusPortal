@@ -69,7 +69,7 @@ ul.list_bullet li a { color: #240000; font-weight: normal; text-decoration: none
 ul.list_bullet li a:hover { color: #240000 }
 
 #tooplate_wrapper {
-	width: 1300px;/* 960px;*/
+	width: 1000px;/* 960px;*/
 	margin: 0 auto;
 	padding: 0 10px;
 	background: url(images/tooplate_menu_bar.png) no-repeat top center
