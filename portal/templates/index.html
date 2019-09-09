@@ -81,11 +81,9 @@ ddsmoothmenu.init({
 
 {% block content3 %}
     <div id="tooplate_middle_map">
+        {% leaflet_map "main" callback="map_init" %}
         <script type="text/javascript">    
           function map_init(map, options){
-              L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-          attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
-        }).addTo(map);
               map.setView([-0.6605788, 14.8965794], 4); //1.3733, 32.2903
           }
         </script>
