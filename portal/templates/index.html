@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- load slider JS -->
+{% block js %}
+<script type="text/javascript">
+ddsmoothmenu.init({
+    mainmenuid: "tooplate_menu", //menu DIV id
+    orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+    classname: 'ddsmoothmenu', //class added to menu's outer DIV
+    //customtheme: ["#1c5a80", "#18374a"],
+    contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+</script>
+{% endblock %}
+
+<!-- Slider section -->
+{% block content1 %}
+<div id="tooplate_slider_wrapper">
+    <div id="tooplate_slider_content">
+            <p>Uncovering the spatial temporal distribution of Viral Pathogens in the East African region</p>
+  <a href="#" class="more_b">Learn more</a>
+        </div>
+        
+        <div id="tooplate_slider" class="slider-wrapper theme-orman">
+            <div id="slider" class="nivoSlider">
+                <a rel="nofollow" href="#" target="_blank"><img src="{% static 'images/slider/ebola.jpeg' %}" alt="" title="This is an example of a caption" /></a>
+                <img src="{% static 'images/slider/dengue.jpeg' %}" alt="" title="#htmlcaption" />
+                <img src="{% static 'images/slider/yellow.jpeg' %}" alt="" title="#htmlcaption" />
+            </div>
+            <div id="htmlcaption" class="nivo-html-caption">
+                <strong>This</strong> is an example of a <em>HTML</em> caption with <a rel="nofollow" href="#" target="_blank">a credit link</a>.            
+            </div>
+        </div> 
+        <script type="text/javascript" src="{% static 'js/jquery-1.6.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.nivo.slider.pack.js' %}"></script>
+        <script type="text/javascript">
+        $(window).load(function() {
+            $('#slider').nivoSlider({
+                effect: 'boxRainGrow',
+                controlNav:false,
+                directionNavHide: false
+            });
+        });
+        </script>
+        <div class="clear"></div>
+    </div> <!-- END of slider -->   
+{% endblock %}
+
+<!-- Overview section -->
+{% block content2 %}
+    <div id="tooplate_middle">
+        <div class="col col_3m">
+            <img class="img_fl" src="{% static 'images/virus.jpeg' %}" alt="Image" />
+            <h2><a href="#"><strong>Viruses</strong></a></h2>
+            <p>Viral pathogens discovered in the East African region from 1920's to date.
+                Examples of these include: Yellow fever, Zika,
+                Dengue, Ebola, Marburg among others.
+            </p><a href="#" class="more_b">More</a>
+        </div>
+        <div class="col col_3m">
+            <img class="img_fl" src="{% static 'images/sample.png' %}" alt="Image" />
+            <h2><a href="#"><strong>Samples</strong></a></h2>
+            <p>Samples from which viruses are detected. 
+                Samples are annotated by sampling locations,
+                assay type, instrument models, collection and sequencing dates.</p><a href="#" class="more_b">More</a>
+        </div>
+        <div class="col col_3m">
+            <img class="img_fl" src="{% static 'images/insects.png' %}" alt="Image" />
+            <h2><a href="#"><strong>Organisms</strong></a></h2>
+            <p>Specimen species from which samples were extracted. This is mostly humans, mosquitoes, ticks, cattle, dogs and a few wild animals such as monkeys.</p><a href="#" class="more_b">More</a>
+        </div>   
+        <div class="col col_3m no_mr">
+            <img class="img_fl" src="{% static 'images/project.png' %}" alt="Image" />
+            <h2><a href="#"><strong>Projects</strong></a></h2>
+            <p>Specimen species from which samples were extracted. This is mostly humans, mosquitoes, ticks, cattle, dogs and a few wild animals such as monkeys.</p><a href="#" class="more_b">More</a>
+        </div>   
+        <div class="clear"></div>
+    </div> <!-- END of middle -->
+{% endblock %}
+
+{% block content3 %}
+    <div id="tooplate_middle_map">
+        <script type="text/javascript">    
+          function map_init(map, options){
+              L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+          attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+        }).addTo(map);
+              map.setView([-0.6605788, 14.8965794], 4); //1.3733, 32.2903
+          }
+        </script>
+    </div>
+{% endblock %}
+

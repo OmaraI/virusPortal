@@ -1,0 +1,137 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    {% load static %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>The East African Viral Spatial Temporal Database</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <!--
+        Template 2061 red bokeh
+        http://www.tooplate.com/view/2061-red-bokeh
+        -->
+        <link href="{% static 'tooplate_style.css' %}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{% static 'css/orman.css' %}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{% static 'css/nivo-slider.css' %}" type="text/css" media="screen" />	
+        <link rel="stylesheet" type="text/css" href="{% static 'css/ddsmoothmenu.css' %}" />
+        {% block css %}
+        {% endblock %}
+
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/ddsmoothmenu.js' %}">
+        /***********************************************
+        * Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+        * This notice MUST stay intact for legal use
+        * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+        ***********************************************/
+        </script>
+        {% block js %}
+        {% endblock %}
+    </head>
+    <!-- End of head -->
+
+    <body>
+        <div id="tooplate_wrapper">
+        	<!-- header -->
+            <div id="tooplate_header">
+                <div id="site_title"><a href="#">The East African Viral Spatial Temporal Database</a></div>
+            </div> <!-- END of header -->
+            
+            <div id="tooplate_menu" class="ddsmoothmenu">
+                <ul>
+                    <li><a href="/home/" class="selected">Home</a></li>
+                    <li><a href="/search/">Search</a></li>
+                    <li><a href="/publications/">Publications</a></li>
+                    <li><a href="/summary/">Summary</a></li>
+                    <li><a href="/guidelines/">Guidelines</a></li>
+                    <li><a href="/contact/">Contact Us</a></li>
+                </ul>
+                <br style="clear: left" />
+            </div> <!-- end of tooplate_menu -->
+
+            <!-- Another section -->
+            {% block content1 %}
+            {% endblock %}
+            {% block content2 %}
+            {% endblock %}
+            {% block content3 %}
+            {% endblock %}
+            {% block content4 %}
+            {% endblock %}
+            {% block content5 %}
+            {% endblock %}
+
+            <!-- Partners section-->
+            <div id="tooplate_bottom2">
+                <div class="col col_4p">
+                    <img src="{% static 'images/uvri.png' %}" alt="" />
+                </div>
+                <div class="col col_4p">
+                    <img src="{% static 'images/mrc.jpeg' %}" alt="" />
+                </div>
+                <div class="col col_4p">
+                    <img src="{% static 'images/muk.png' %}" alt="" />
+                </div>
+                <div class="col col_4p">
+                    <img src="{% static 'images/bionet.png' %}" alt="" />
+                </div>
+                <div class="clear"></div> 
+            </div>
+
+            <!-- footer 1 -->
+        	<div id="tooplate_bottom">
+            <div class="col col_3 no_mb">
+                	<h3>Quick links</h3>
+                    <ul class="nobullet bottom_list">
+                    	<li><a href="#">Home</a></li>
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">Summary</a></li>
+                        <li><a href="#">Publications</a></li>
+                        <li><a href="#">Guidelines</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col col_3 no_mb">
+                	<h3>Our partners</h3>
+                    <ul class="nobullet bottom_list">
+                    	<li><a href="#">KEMRI Wellcome Trust</a></li>
+                        <li><a href="#">Makerere University</a></li>
+                        <li><a href="#">Uganda Virus Research Institute</a></li>
+                        <li><a href="#">MRC/UVRI and LSHTM Uganda Research Unit</a></li>
+                        <li><a href="#">H3ABioNet</a></li>
+                    </ul>
+                </div>
+                
+                 <div class="col col_3 no_mb">
+                	<h3>Exernal links</h3>
+                    <ul class="nobullet bottom_list">
+                    	<li><a href="#">NCBI</a></li>
+                        <li><a href="#">Nextstrain</a></li>
+                        <li><a href="#">Virus Pathogen DB</a></li>
+                        <li><a href="#">Vector Base</a></li>
+                        <li><a href="#">EGA</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!-- end of footer 1 -->
+
+            <!-- footer 2 -->
+            <div id="tooplate_footer">
+            	<div class="col_32 left">
+        	    	<p> Copyright © 2019 Uganda Virus Research Institute <p/> 
+        		</div>
+                <div class="col_3 right" style="text-align: right">
+                    <a href="#"><img src="{% static 'images/twitter2.png' %}" alt="Twitter" /></a>
+                    <a href="#"><img src="{% static 'images/youtube.png' %}" alt="Youtube" /></a>
+                    <a href="#"><img src="{% static 'images/facebook.png' %}" alt="Facebook" /></a>
+        		</div>
+                <div class="clear"></div>
+            </div>
+            <!-- end of footer2 -->
+        </div>
+        <!-- End of tooplate wrapper -->
+
+    </body>
+</html>
