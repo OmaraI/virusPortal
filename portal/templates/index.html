@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load leaflet_tags %}
-{% leaflet_js %}
-{% leaflet_css %}
 
 <!-- load slider JS -->
+{% block css %}
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+{% endblock %}
+
 {% block js %}
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+   crossorigin=""></script>
 <script type="text/javascript">
 ddsmoothmenu.init({
     mainmenuid: "tooplate_menu", //menu DIV id
@@ -15,6 +21,7 @@ ddsmoothmenu.init({
     contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
 })
 </script>
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 {% endblock %}
 
 <!-- Slider section -->
@@ -73,18 +80,21 @@ ddsmoothmenu.init({
             <h2><a href="#"><strong>Organisms</strong></a></h2>
             <p>Specimen species from which samples were extracted. This is mostly humans, mosquitoes, ticks, cattle, dogs and a few wild animals such as monkeys.</p><a href="#" class="more_b">More</a>
         </div>   
+        <div class="col col_3m no_mr">
+            <img class="img_fl" src="{% static 'images/project.png' %}" alt="Image" />
+            <h2><a href="#"><strong>Projects</strong></a></h2>
+            <p>Specimen species from which samples were extracted. This is mostly humans, mosquitoes, ticks, cattle, dogs and a few wild animals such as monkeys.</p><a href="#" class="more_b">More</a>
+        </div>   
         <div class="clear"></div>
     </div> <!-- END of middle -->
 {% endblock %}
 
 {% block content3 %}
-    <div id="tooplate_middle_map">
-        {% leaflet_map "main" callback="map_init" %}
-        <script type="text/javascript">    
-          function map_init(map, options){
-              map.setView([-0.6605788, 14.8965794], 4); //1.3733, 32.2903
-          }
-        </script>
-    </div>
+    <div id="tooplate_middle_map"></div>
+    <script type="text/javascript">
+    var map = L.map('tooplate_middle_map').setView([-0.6605788, 14.8965794], 4);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+          attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
+        }).addTo(map);
+    </script>
 {% endblock %}
-
