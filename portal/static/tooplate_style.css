@@ -95,6 +95,7 @@ ul.list_bullet li a:hover { color: #240000 }
 	padding: 20px;
 	margin-bottom: 20px;
 	background: #EAEDED; /*url(images/tooplate_menu_bar.png) no-repeat*/
+	overflow:auto;
 	border-radius: 25px;
 }
 
