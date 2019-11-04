@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block js %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+{% endblock %}
 
 {% block css %}
 <style>
@@ -65,7 +71,6 @@
 }
 </style>
 {% endblock %}
-
 
 {% block content1 %}
 <div class="container">
