@@ -1,23 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block js %}
-<script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/highcharts.src.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/exporting.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/export-data.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/accessibility.js' %}"></script>
 {% endblock %}
 
 {% block css %}
 <style>
 .container {
   display: grid;
-  grid-column-gap: 5px;
-  grid-row-gap:5px;
-  grid-template-columns: 330px 330px 330px;
-  grid-template-areas: "chart1 chart2 chart3" 
-                       "chart1 chart2 chart3" 
-                       "map_div map_div chart4" 
-                       "table1 table1 table1";
+  grid-column-gap: 10px;
+  grid-row-gap:10px;
+  grid-template-columns: 495px 495px;
+  grid-template-areas: "chart1 chart2" 
+                       "chart3 chart4" 
+                       "chart5 chart6" 
 }
 .item {
   color: white;
@@ -33,41 +32,38 @@
 .chart3 {
   background:  #186099 ;
 }
-.map_div {
-  background:  #186099 ;
-}
 .chart4 {
   background:  #186099 ;
 }
 .chart5 {
   background:  #186099 ;
 }
-.table1 {
+.chart6 {
   background:  #186099 ;
 }
 .chart1 {
   grid-area: chart1;
+  height: 400px
 }
 .chart2 {
   grid-area: chart2;
+  height: 400px
 }
 .chart3 {
   grid-area: chart3;
   height: 400px
 }
-.map_div {
-  grid-area: map_div;
-}
 .chart4 {
   grid-area: chart4;
   height: 400px;
 }
-.table1 {
-  grid-area: table1;
+.chart5 {
+  grid-area: chart5;
   height: 400px;
 }
-.age_chart {
-  grid-area: age_chart;
+.chart6 {
+  grid-area: chart6;
+  height: 400px;
 }
 </style>
 {% endblock %}
@@ -77,8 +73,435 @@
   <div class="item chart1" id='body_site'></div>
   <div class="item chart2" id='assay_type'></div>
   <div class="item chart3" id='platform'></div>
-  <div class="item map_div"></div>
-  <div class="item chart4" id='disease'></div>
-  <div class="item table1" id=''></div>
+  <div class="item chart4" id='platform2'></div>
+  <div class="item chart5" id='disease'></div>
+  <div class="item chart6" id='other'></div>
 </div>
+<script>
+	var age = [
+	['18-25 Years', 1], 
+	['26-35 Years', 2], 
+	['36-45 Years', 1], 
+	['Over 45', 0]
+	] ;
+
+    Highcharts.chart('body_site', {
+        
+        chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45
+        }
+    },
+    title: {
+        text: 'Studies by bodysite'
+    },
+    subtitle: {
+        text: ''
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true,
+            innerSize: 100,
+            depth: 45
+        }
+    },
+    series: [{
+            name: 'Body site',
+            data: age
+    }]
+    });
+</script>
+
+<script>
+	var age = [
+	['18-25 Years', 1], 
+	['26-35 Years', 2], 
+	['36-45 Years', 1], 
+	['Over 45', 0]
+	] ;
+
+    Highcharts.chart('assay_type', {
+        
+        chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45
+        }
+    },
+    title: {
+        text: 'Studies by bodysite'
+    },
+    subtitle: {
+        text: ''
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true,
+            innerSize: 100,
+            depth: 45
+        }
+    },
+    series: [{
+            name: 'Body site',
+            data: age
+    }]
+    });
+</script>
+
+<script>
+	var age = [
+	['18-25 Years', 1], 
+	['26-35 Years', 2], 
+	['36-45 Years', 1], 
+	['Over 45', 0]
+	] ;
+
+    Highcharts.chart('platform', {
+        
+        chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45
+        }
+    },
+    title: {
+        text: 'Studies by bodysite'
+    },
+    subtitle: {
+        text: ''
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true,
+            innerSize: 100,
+            depth: 45
+        }
+    },
+    series: [{
+            name: 'Body site',
+            data: age
+    }]
+    });
+</script>
+
+<script>
+var outbreaks = [
+  [1960, 1],
+  [1970, 1],
+  [1980, 2],
+  [1990, 3],
+  [2000, 5],
+  [2010, 4],
+  [2020, 6]
+];
+
+var others = [
+  [1960, 'Ebola'],
+  [1970, 'Maburg'],
+  [1980, 'Yellow Fever'],
+  [1990, 'Ebola'],
+  [2000, 'HPV'],
+  [2010, 'Ebola'],
+  [2020, 'Ebola']
+];
+
+Highcharts.chart('platform2', {
+
+chart: {
+    type: 'area',
+    zoomType: 'x',
+    panning: true,
+    panKey: 'shift',
+    scrollablePlotArea: {
+        minWidth: 600
+    }
+},
+
+caption: {
+    text: 'hidden to avoid overlap on small screens.'
+},
+
+title: {
+    text: 'Studies of VHF outbreaks over time'
+},
+
+accessibility: {
+    description: 'Image description: An annotated line graph illustrates the 8th stage of the 2017 Tour de France cycling race from the start point in Dole to the finish line at Station des Rousses. Altitude is plotted on the Y-axis at increments of 500m and distance is plotted on the X-axis in increments of 25 kilometers. The line graph is interactive, and the user can trace the altitude level at every 100-meter point along the stage. The graph is shaded below the data line to visualize the mountainous altitudes encountered on the 187.5-kilometre stage. The three largest climbs are highlighted at Col de la Joux, Côte de Viry and the final 11.7-kilometer, 6.4% gradient climb to Montée de la Combe de Laisia Les Molunes which peaks at 1200 meters above sea level. The stage passes through the villages of Arbois, Montrond, Bonlieu, Chassal and Saint-Claude along the route.'
+},
+
+credits: {
+    enabled: false
+},
+
+annotations: [{
+    labelOptions: {
+        backgroundColor: 'rgba(255,255,255,0.5)',
+        verticalAlign: 'top',
+        y: 15
+    },
+}, 
+{
+    labelOptions: {
+        shape: 'connector',
+        align: 'right',
+        justify: false,
+        crop: true,
+        style: {
+            fontSize: '0.8em',
+            textOutline: '1px white'
+        }
+    }
+}],
+
+xAxis: {
+    labels: {
+        format: '{value}'
+    },
+    minRange: 5,
+    title: {
+        text: 'Year'
+    },
+    accessibility: {
+        rangeDescription: 'Range: 0 to 10 years.'
+    }
+},
+
+yAxis: {
+    startOnTick: true,
+    endOnTick: false,
+    maxPadding: 0.35,
+    title: {
+        text: null
+    },
+    labels: {
+        format: '{value}'
+    }
+},
+
+tooltip: {
+    headerFormat: 'Year: {point.x} <br>',
+    pointFormat: 'Studies: {point.y} ',
+    shared: true
+},
+
+legend: {
+    enabled: false
+},
+
+series: [{
+    accessibility: {
+        keyboardNavigation: {
+            enabled: false
+        }
+    },
+    data: outbreaks,
+    lineColor: Highcharts.getOptions().colors[1],
+    color: Highcharts.getOptions().colors[2],
+    fillOpacity: 0.5,
+    name: 'Elevation',
+    marker: {
+        enabled: false
+    },
+    threshold: null
+}]
+
+});
+</script>
+
+<script>
+	var age = [
+	['18-25 Years', 1], 
+	['26-35 Years', 2], 
+	['36-45 Years', 1], 
+	['Over 45', 0]
+	] ;
+
+    Highcharts.chart('disease', {
+        
+        chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45
+        }
+    },
+    title: {
+        text: 'Studies by bodysite'
+    },
+    subtitle: {
+        text: ''
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true,
+            innerSize: 100,
+            depth: 45
+        }
+    },
+    series: [{
+            name: 'Body site',
+            data: age
+    }]
+    });
+</script>
+
+<script>
+    var outbreaks = [
+      [1960, 1],
+      [1970, 1],
+      [1980, 2],
+      [1990, 3],
+      [2000, 5],
+      [2010, 4],
+      [2020, 6]
+    ];
+    
+    var others = [
+      [1960, 'Ebola'],
+      [1970, 'Maburg'],
+      [1980, 'Yellow Fever'],
+      [1990, 'Ebola'],
+      [2000, 'HPV'],
+      [2010, 'Ebola'],
+      [2020, 'Ebola']
+    ];
+    
+    Highcharts.chart('other', {
+    
+    chart: {
+        type: 'area',
+        zoomType: 'x',
+        panning: true,
+        panKey: 'shift',
+        scrollablePlotArea: {
+            minWidth: 600
+        }
+    },
+    
+    caption: {
+        text: 'hidden to avoid overlap on small screens.'
+    },
+    
+    title: {
+        text: 'Studies of VHF outbreaks over time'
+    },
+    
+    accessibility: {
+        description: 'Image description: An annotated line graph illustrates the 8th stage of the 2017 Tour de France cycling race from the start point in Dole to the finish line at Station des Rousses. Altitude is plotted on the Y-axis at increments of 500m and distance is plotted on the X-axis in increments of 25 kilometers. The line graph is interactive, and the user can trace the altitude level at every 100-meter point along the stage. The graph is shaded below the data line to visualize the mountainous altitudes encountered on the 187.5-kilometre stage. The three largest climbs are highlighted at Col de la Joux, Côte de Viry and the final 11.7-kilometer, 6.4% gradient climb to Montée de la Combe de Laisia Les Molunes which peaks at 1200 meters above sea level. The stage passes through the villages of Arbois, Montrond, Bonlieu, Chassal and Saint-Claude along the route.'
+    },
+    
+    credits: {
+        enabled: false
+    },
+    
+    annotations: [{
+        labelOptions: {
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            verticalAlign: 'top',
+            y: 15
+        },
+    }, 
+    {
+        labelOptions: {
+            shape: 'connector',
+            align: 'right',
+            justify: false,
+            crop: true,
+            style: {
+                fontSize: '0.8em',
+                textOutline: '1px white'
+            }
+        }
+    }],
+    
+    xAxis: {
+        labels: {
+            format: '{value}'
+        },
+        minRange: 5,
+        title: {
+            text: 'Year'
+        },
+        accessibility: {
+            rangeDescription: 'Range: 0 to 10 years.'
+        }
+    },
+    
+    yAxis: {
+        startOnTick: true,
+        endOnTick: false,
+        maxPadding: 0.35,
+        title: {
+            text: null
+        },
+        labels: {
+            format: '{value}'
+        }
+    },
+    
+    tooltip: {
+        headerFormat: 'Year: {point.x} <br>',
+        pointFormat: 'Studies: {point.y} ',
+        shared: true
+    },
+    
+    legend: {
+        enabled: false
+    },
+    
+    series: [{
+        accessibility: {
+            keyboardNavigation: {
+                enabled: false
+            }
+        },
+        data: outbreaks,
+        lineColor: Highcharts.getOptions().colors[1],
+        color: Highcharts.getOptions().colors[2],
+        fillOpacity: 0.5,
+        name: 'Elevation',
+        marker: {
+            enabled: false
+        },
+        threshold: null
+    }]
+    
+    });
+    </script>
 {% endblock %}

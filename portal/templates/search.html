@@ -1,2 +1,47 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block css %}
+<style>
+.inline-block-child {
+    display: inline-block;
+    width: 15%;
+  }  
+</style>
+{% endblock %}
+<!-- Another section -->
+
+{% block content1 %}
+{% csrf_token %}
+<div class="inline-block-child"></div>
+<div class="inline-block-child">
+    {% for field in virusform %}
+    <a><Strong>Viruses:<Strong></Strong></a>
+    <a>{{ field }}</a>
+    {% endfor %}
+</div>
+<div class="inline-block-child">
+    {% for field in organismform %}
+    <a><Strong>Hosts:<Strong></Strong></a>
+    <a>{{ field }}</a>
+    {% endfor %}
+</div>
+<div class="inline-block-child">
+    {% for field in siteform %}
+    <a><Strong>Sites:<Strong></Strong></a>
+    <a>{{ field }}</a>
+    {% endfor %}
+</div>
+
+<div class="inline-block-child">
+    <button><Strong>Submit</Strong></button>
+</div>
+{% endblock %}
+
+{% block content2 %}
+<div><br></div>
+{% endblock %}
+
+{% block content3 %}
+<div id="tooplate_middle"></div>
+{% endblock %}
