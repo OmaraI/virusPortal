@@ -1,47 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block js %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script  type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+{% endblock %}
+
 {% block css %}
-<style>
-.inline-block-child {
-    display: inline-block;
-    width: 15%;
-  }  
-</style>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">  
 {% endblock %}
+
 <!-- Another section -->
-
-{% block content1 %}
-{% csrf_token %}
-<div class="inline-block-child"></div>
-<div class="inline-block-child">
-    {% for field in virusform %}
-    <a><Strong>Viruses:<Strong></Strong></a>
-    <a>{{ field }}</a>
-    {% endfor %}
-</div>
-<div class="inline-block-child">
-    {% for field in organismform %}
-    <a><Strong>Hosts:<Strong></Strong></a>
-    <a>{{ field }}</a>
-    {% endfor %}
-</div>
-<div class="inline-block-child">
-    {% for field in siteform %}
-    <a><Strong>Sites:<Strong></Strong></a>
-    <a>{{ field }}</a>
-    {% endfor %}
-</div>
-
-<div class="inline-block-child">
-    <button><Strong>Submit</Strong></button>
-</div>
-{% endblock %}
-
-{% block content2 %}
-<div><br></div>
-{% endblock %}
-
 {% block content3 %}
-<div id="tooplate_middle"></div>
+<table id="search" class="display nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Scientific Name</th>
+            <th>Taxon</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for virus in viruses %}
+        <tr><td>{{virus.name}}</td>
+            <td>{{virus.scientific_name}}</td>
+            <td>{{virus.taxon}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#search').DataTable( {
+        searchPane: true,
+        dom: 'Pfrtip'
+    });
+});
+</script>
 {% endblock %}

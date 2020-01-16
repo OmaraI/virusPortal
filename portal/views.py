@@ -34,6 +34,8 @@ def search(request):
    virusform = VirusForm()
    organismform = OrganismForm()
    siteform = SiteForm()
+   viruses=virus.objects.all()
+
    if request.method == "POST":
       virusform = VirusForm(request.POST)
       organismform = OrganismForm(request.POST)
@@ -46,6 +48,7 @@ def search(request):
           'virusform': virusform,
           'organismform':organismform,
           'siteform':siteform,
+          'viruses':viruses,
    })
 
 def summary(request):

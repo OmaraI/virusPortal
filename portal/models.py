@@ -52,7 +52,6 @@ class sample(models.Model):
     instrument=models.ForeignKey(instrument, on_delete=models.CASCADE)
     project=models.ForeignKey(project, on_delete=models.CASCADE)
 
-
 class sample_virus(models.Model):
     id=models.AutoField(primary_key=True)
     sample=models.ForeignKey(sample,on_delete=models.CASCADE)

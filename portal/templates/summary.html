@@ -11,35 +11,17 @@
 <style>
 .container {
   display: grid;
-  grid-column-gap: 10px;
-  grid-row-gap:10px;
-  grid-template-columns: 495px 495px;
+  grid-column-gap: 0px;
+  grid-row-gap:0px;
+  grid-template-columns: 500px 500px;
   grid-template-areas: "chart1 chart2" 
                        "chart3 chart4" 
                        "chart5 chart6" 
 }
 .item {
   color: white;
-  padding: 0.5em 0;
+  padding: 0.0em 0;
   font-size: 2em;
-}
-.chart1 {
-  background:  #186099 ;
-}
-.chart2 {
-  background:  #186099 ;
-}
-.chart3 {
-  background:  #186099 ;
-}
-.chart4 {
-  background:  #186099 ;
-}
-.chart5 {
-  background:  #186099 ;
-}
-.chart6 {
-  background:  #186099 ;
 }
 .chart1 {
   grid-area: chart1;
@@ -88,8 +70,8 @@
     Highcharts.chart('body_site', {
         
         chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
+      backgroundColor: '#3EF0D2',
+      plotBackgroundColor: '#3EF0D2',
         plotShadow: false,
         type: 'pie',
         options3d: {
@@ -133,7 +115,8 @@
     Highcharts.chart('assay_type', {
         
         chart: {
-        plotBackgroundColor: null,
+        plotBackgroundColor: '#1583D5',
+        backgroundColor: '#1583D5',
         plotBorderWidth: null,
         plotShadow: false,
         type: 'pie',
@@ -178,8 +161,9 @@
     Highcharts.chart('platform', {
         
         chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
+        backgroundColor: '#FFC300',
+      plotBackgroundColor: '#FFC300',
+              plotBorderWidth: null,
         plotShadow: false,
         type: 'pie',
         options3d: {
@@ -223,16 +207,6 @@ var outbreaks = [
   [2020, 6]
 ];
 
-var others = [
-  [1960, 'Ebola'],
-  [1970, 'Maburg'],
-  [1980, 'Yellow Fever'],
-  [1990, 'Ebola'],
-  [2000, 'HPV'],
-  [2010, 'Ebola'],
-  [2020, 'Ebola']
-];
-
 Highcharts.chart('platform2', {
 
 chart: {
@@ -240,6 +214,8 @@ chart: {
     zoomType: 'x',
     panning: true,
     panKey: 'shift',
+    backgroundColor: '#DAF7A6',
+      plotBackgroundColor: '#DAF7A6',
     scrollablePlotArea: {
         minWidth: 600
     }
@@ -347,8 +323,9 @@ series: [{
     Highcharts.chart('disease', {
         
         chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
+backgroundColor: '#1B7CBC',
+      plotBackgroundColor: '#1B7CBC',
+            plotBorderWidth: null,
         plotShadow: false,
         type: 'pie',
         options3d: {
@@ -392,16 +369,6 @@ series: [{
       [2020, 6]
     ];
     
-    var others = [
-      [1960, 'Ebola'],
-      [1970, 'Maburg'],
-      [1980, 'Yellow Fever'],
-      [1990, 'Ebola'],
-      [2000, 'HPV'],
-      [2010, 'Ebola'],
-      [2020, 'Ebola']
-    ];
-    
     Highcharts.chart('other', {
     
     chart: {
@@ -409,6 +376,8 @@ series: [{
         zoomType: 'x',
         panning: true,
         panKey: 'shift',
+        backgroundColor: '#1BBC49',
+        plotBackgroundColor: '#1BBC49',
         scrollablePlotArea: {
             minWidth: 600
         }
