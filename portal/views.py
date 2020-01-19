@@ -5,12 +5,11 @@ import numpy as np
 from portal.models import *
 from portal.forms import *
 
-def  home(request):
-	return render(request, 'index.html')
-
-def  search(request):
-	return render(request, 'search.html')
-
+def  home(request):  
+  outbreak = pd.DataFrame(list(outbreaks.objects.all().values()))
+  return render(request, 'index.html',
+              {'outbreak': outbreak})
+  
 def  guidelines(request):
 	return render(request, 'guidelines.html')
 
@@ -31,43 +30,17 @@ def  downloads(request):
               'organisms':organisms})
 
 def search(request):
-   virusform = VirusForm()
-   organismform = OrganismForm()
-   siteform = SiteForm()
-   viruses=virus.objects.all()
 
-   if request.method == "POST":
-      virusform = VirusForm(request.POST)
-      organismform = OrganismForm(request.POST)
-      siteform = SiteForm(request.POST)
-      if virusform.is_valid & organismform.is_valid & siteform.is_valid :
-         #redirect to the url where you'll process the input
-         return render(...) # insert reverse or url
-   
+   outbreak=outbreaks.objects.all()  
+  
    return render(request, 'search.html',{
-          'virusform': virusform,
-          'organismform':organismform,
-          'siteform':siteform,
-          'viruses':viruses,
+          'outbreak':outbreak,
    })
 
 def summary(request):
-    samples=sample.objects.all()
-    viruses=virus.objects.all()
-    sites=site.objects.all()
-    projects=project.objects.all()
-    organisms=organism.objects.all()
-
-    context={}
-    """ context={'xdata_assay': xdata_assay, 
-		'ydata_assay': ydata_assay,
-		'xdata_disease': xdata_disease, 
-		'ydata_disease': ydata_disease, 
-		'platform_pie_dict': platform_pie_dict, 
-		'site_pie_dict': site_pie_dict, 
-		'all_records': all_records};
-    """    
-    return render(request, 'summary.html', context=context)
+  outbreak = pd.DataFrame(list(outbreaks.objects.all().values()))
+  context={'outbreak':'outbreak'}
+  return render(request, 'summary.html', context=context)
 
 def etax(request):
     e_tax = pd.read_csv("/Users/macbook/Desktop/e_tax_data.csv")

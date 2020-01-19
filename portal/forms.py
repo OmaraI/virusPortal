@@ -1,6 +1,5 @@
 from django import forms
 from .models import *
-#from django_select2.forms import Select2Widget
 
 class VirusForm(forms.Form):
     viruses = forms.ModelChoiceField(

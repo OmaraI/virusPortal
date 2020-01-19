@@ -149,20 +149,15 @@ ul.list_bullet li a:hover { color: #240000 }
 	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-.col { float: left; margin: 0 30px 30px 0 }
+.col { float: left; margin: 0 0px 0px 0 }
 .col_2 { width: 435px }
-.col_3 { width: 204px;	padding: 0 20px 0px 20px}
+.col_3 { width: 200px;	padding: 0 60px 0px 50px}
 .col_32 { width: 590px }
 .col_4 { width: 202px }
 .col_43 { width: 607px }
 .col_5 { width: 156px }
-.col_3m { width: 260px }
-
-#tooplate_content .col { float: left; margin: 0 20px 20px 0 }
-#tooplate_content .col_2 { width: 280px }
-#tooplate_content .col_3 { width: 176px }
-#tooplate_content .col_32 { width: 590px }
-#tooplate_content .no_mr { margin-right: 0 }
+.col_3m { width: 250px; padding: 0px 10px 0px 50px; height: 200px }
+.no_mr { margin-right: 0 }
 
 /* header */
 

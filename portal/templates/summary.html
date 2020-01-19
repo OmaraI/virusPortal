@@ -14,50 +14,47 @@
   grid-column-gap: 0px;
   grid-row-gap:0px;
   grid-template-columns: 500px 500px;
-  grid-template-areas: "chart1 chart2" 
-                       "chart3 chart4" 
-                       "chart5 chart6" 
+  grid-template-areas: "timeline timeline" 
+                       "sites country" 
+                       "disease host" 
 }
 .item {
   color: white;
   padding: 0.0em 0;
   font-size: 2em;
 }
-.chart1 {
-  grid-area: chart1;
+
+.timeline {
+  grid-area: timeline;
   height: 400px
 }
-.chart2 {
-  grid-area: chart2;
+.sites {
+  grid-area: sites;
   height: 400px
 }
-.chart3 {
-  grid-area: chart3;
+.country {
+  grid-area: country;
   height: 400px
 }
-.chart4 {
-  grid-area: chart4;
+.disease {
+  grid-area: disease;
+  height: 400px
+}
+.host {
+  grid-area: host;
   height: 400px;
 }
-.chart5 {
-  grid-area: chart5;
-  height: 400px;
-}
-.chart6 {
-  grid-area: chart6;
-  height: 400px;
-}
+
 </style>
 {% endblock %}
 
 {% block content1 %}
 <div class="container">
-  <div class="item chart1" id='body_site'></div>
-  <div class="item chart2" id='assay_type'></div>
-  <div class="item chart3" id='platform'></div>
-  <div class="item chart4" id='platform2'></div>
-  <div class="item chart5" id='disease'></div>
-  <div class="item chart6" id='other'></div>
+  <div class="item timeline" id='timeline'></div>
+  <div class="item disease" id='disease'></div>
+  <div class="item sites" id='sites'></div>
+  <div class="item country" id='country'></div>
+  <div class="item host" id='host'></div>
 </div>
 <script>
 	var age = [
@@ -67,20 +64,23 @@
 	['Over 45', 0]
 	] ;
 
-    Highcharts.chart('body_site', {
+    Highcharts.chart('disease', {
         
-        chart: {
-      backgroundColor: '#3EF0D2',
-      plotBackgroundColor: '#3EF0D2',
-        plotShadow: false,
-        type: 'pie',
-        options3d: {
+    chart: {
+    backgroundColor: '#1BBC49', //#3EF0D2
+    plotBackgroundColor: '#1BBC49',
+    plotShadow: false,
+    type: 'pie',
+    options3d: {
             enabled: true,
             alpha: 45
         }
     },
     title: {
-        text: 'Studies by bodysite'
+        text: 'Outbreaks by disease',
+        style: {"color": "#FFFFFF", 
+                "fontSize": "25px",
+                "fontWeight": 'bold'}
     },
     subtitle: {
         text: ''
@@ -112,11 +112,11 @@
 	['Over 45', 0]
 	] ;
 
-    Highcharts.chart('assay_type', {
+    Highcharts.chart('country', {
         
         chart: {
-        plotBackgroundColor: '#1583D5',
-        backgroundColor: '#1583D5',
+        plotBackgroundColor: 'orange',
+        backgroundColor: 'orange',
         plotBorderWidth: null,
         plotShadow: false,
         type: 'pie',
@@ -126,7 +126,10 @@
         }
     },
     title: {
-        text: 'Studies by bodysite'
+        text: 'Outbreaks by Country',
+        style: {"color": "#FFFFFF", 
+                "fontSize": "25px",
+                "fontWeight": 'bold'}
     },
     subtitle: {
         text: ''
@@ -158,11 +161,11 @@
 	['Over 45', 0]
 	] ;
 
-    Highcharts.chart('platform', {
+    Highcharts.chart('sites', {
         
         chart: {
-        backgroundColor: '#FFC300',
-      plotBackgroundColor: '#FFC300',
+        backgroundColor: '#1BBC49',
+      plotBackgroundColor: '#1BBC49',
               plotBorderWidth: null,
         plotShadow: false,
         type: 'pie',
@@ -172,7 +175,10 @@
         }
     },
     title: {
-        text: 'Studies by bodysite'
+        text: 'Studies by Sampling sites',
+        style: {"color": "#FFFFFF", 
+                "fontSize": "25px",
+                "fontWeight": 'bold'}
     },
     subtitle: {
         text: ''
@@ -207,30 +213,33 @@ var outbreaks = [
   [2020, 6]
 ];
 
-Highcharts.chart('platform2', {
+Highcharts.chart('timeline', {
 
 chart: {
     type: 'area',
     zoomType: 'x',
     panning: true,
     panKey: 'shift',
-    backgroundColor: '#DAF7A6',
-      plotBackgroundColor: '#DAF7A6',
+    backgroundColor: '#1583D6',
+      plotBackgroundColor: '#1583D6',
     scrollablePlotArea: {
         minWidth: 600
     }
 },
 
 caption: {
-    text: 'hidden to avoid overlap on small screens.'
+    text: ''
 },
 
 title: {
-    text: 'Studies of VHF outbreaks over time'
+    text: 'Time line of Viral outbreaks',
+    style: {"color": "#FFFFFF", 
+                "fontSize": "25px",
+                "fontWeight": 'bold'}
 },
 
 accessibility: {
-    description: 'Image description: An annotated line graph illustrates the 8th stage of the 2017 Tour de France cycling race from the start point in Dole to the finish line at Station des Rousses. Altitude is plotted on the Y-axis at increments of 500m and distance is plotted on the X-axis in increments of 25 kilometers. The line graph is interactive, and the user can trace the altitude level at every 100-meter point along the stage. The graph is shaded below the data line to visualize the mountainous altitudes encountered on the 187.5-kilometre stage. The three largest climbs are highlighted at Col de la Joux, Côte de Viry and the final 11.7-kilometer, 6.4% gradient climb to Montée de la Combe de Laisia Les Molunes which peaks at 1200 meters above sea level. The stage passes through the villages of Arbois, Montrond, Bonlieu, Chassal and Saint-Claude along the route.'
+    description: 'Image description: '
 },
 
 credits: {
@@ -259,14 +268,17 @@ annotations: [{
 
 xAxis: {
     labels: {
-        format: '{value}'
+        format: '{value}',
+        style: {"color": "#FFFFFF"}
+
     },
     minRange: 5,
     title: {
-        text: 'Year'
+        text: 'Year',
+        style: {"color": "#FFFFFF"}
     },
     accessibility: {
-        rangeDescription: 'Range: 0 to 10 years.'
+        rangeDescription: 'Range: 0 to 5 years.'
     }
 },
 
@@ -278,7 +290,9 @@ yAxis: {
         text: null
     },
     labels: {
-        format: '{value}'
+        format: '{value}',
+        style: {"color": "#FFFFFF"},
+
     }
 },
 
@@ -323,8 +337,8 @@ series: [{
     Highcharts.chart('disease', {
         
         chart: {
-backgroundColor: '#1B7CBC',
-      plotBackgroundColor: '#1B7CBC',
+backgroundColor: 'orange',
+      plotBackgroundColor: 'orange',
             plotBorderWidth: null,
         plotShadow: false,
         type: 'pie',
@@ -334,7 +348,10 @@ backgroundColor: '#1B7CBC',
         }
     },
     title: {
-        text: 'Studies by bodysite'
+        text: 'Studies by Sampling sites',
+        style: {"color": "#FFFFFF", 
+                "fontSize": "25px",
+                "fontWeight": 'bold'}
     },
     subtitle: {
         text: ''
@@ -369,7 +386,7 @@ backgroundColor: '#1B7CBC',
       [2020, 6]
     ];
     
-    Highcharts.chart('other', {
+    Highcharts.chart('host', {
     
     chart: {
         type: 'area',
@@ -384,15 +401,18 @@ backgroundColor: '#1B7CBC',
     },
     
     caption: {
-        text: 'hidden to avoid overlap on small screens.'
+        text: ''
     },
     
     title: {
-        text: 'Studies of VHF outbreaks over time'
+        text: 'Studies by Host organism',
+        style: {"color": "#FFFFFF", 
+                "fontSize": "25px",
+                "fontWeight": 'bold'}
     },
     
     accessibility: {
-        description: 'Image description: An annotated line graph illustrates the 8th stage of the 2017 Tour de France cycling race from the start point in Dole to the finish line at Station des Rousses. Altitude is plotted on the Y-axis at increments of 500m and distance is plotted on the X-axis in increments of 25 kilometers. The line graph is interactive, and the user can trace the altitude level at every 100-meter point along the stage. The graph is shaded below the data line to visualize the mountainous altitudes encountered on the 187.5-kilometre stage. The three largest climbs are highlighted at Col de la Joux, Côte de Viry and the final 11.7-kilometer, 6.4% gradient climb to Montée de la Combe de Laisia Les Molunes which peaks at 1200 meters above sea level. The stage passes through the villages of Arbois, Montrond, Bonlieu, Chassal and Saint-Claude along the route.'
+        description: 'Image description:'
     },
     
     credits: {

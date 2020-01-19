@@ -57,3 +57,15 @@ class sample_virus(models.Model):
     sample=models.ForeignKey(sample,on_delete=models.CASCADE)
     virus=models.ForeignKey(virus,on_delete=models.CASCADE)
 
+class outbreaks(models.Model):
+    id=models.AutoField(primary_key=True)
+    year=models.IntegerField()
+    disease=models.CharField(max_length=250)
+    location=models.CharField(max_length=250)
+    country=models.CharField(max_length=100)
+    lat=models.DecimalField(max_digits=10,decimal_places=4,default=Decimal('0.0000'))
+    lon=models.DecimalField(max_digits=10,decimal_places=4,default=Decimal('0.0000'))
+    strain=models.CharField(max_length=100)
+    host=models.CharField(max_length=100)    
+
+
