@@ -15,8 +15,8 @@
   grid-row-gap:0px;
   grid-template-columns: 500px 500px;
   grid-template-areas: "timeline timeline" 
-                       "sites country" 
-                       "disease host" 
+                       "disease sites" 
+                       "country host" 
 }
 .item {
   color: white;
@@ -56,155 +56,13 @@
   <div class="item country" id='country'></div>
   <div class="item host" id='host'></div>
 </div>
-<script>
-	var age = [
-	['18-25 Years', 1], 
-	['26-35 Years', 2], 
-	['36-45 Years', 1], 
-	['Over 45', 0]
-	] ;
-
-    Highcharts.chart('disease', {
-        
-    chart: {
-    backgroundColor: '#1BBC49', //#3EF0D2
-    plotBackgroundColor: '#1BBC49',
-    plotShadow: false,
-    type: 'pie',
-    options3d: {
-            enabled: true,
-            alpha: 45
-        }
-    },
-    title: {
-        text: 'Outbreaks by disease',
-        style: {"color": "#FFFFFF", 
-                "fontSize": "25px",
-                "fontWeight": 'bold'}
-    },
-    subtitle: {
-        text: ''
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
-            },
-            showInLegend: true,
-            innerSize: 100,
-            depth: 45
-        }
-    },
-    series: [{
-            name: 'Body site',
-            data: age
-    }]
-    });
-</script>
-
-<script>
-	var age = [
-	['18-25 Years', 1], 
-	['26-35 Years', 2], 
-	['36-45 Years', 1], 
-	['Over 45', 0]
-	] ;
-
-    Highcharts.chart('country', {
-        
-        chart: {
-        plotBackgroundColor: 'orange',
-        backgroundColor: 'orange',
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie',
-        options3d: {
-            enabled: true,
-            alpha: 45
-        }
-    },
-    title: {
-        text: 'Outbreaks by Country',
-        style: {"color": "#FFFFFF", 
-                "fontSize": "25px",
-                "fontWeight": 'bold'}
-    },
-    subtitle: {
-        text: ''
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
-            },
-            showInLegend: true,
-            innerSize: 100,
-            depth: 45
-        }
-    },
-    series: [{
-            name: 'Body site',
-            data: age
-    }]
-    });
-</script>
-
-<script>
-	var age = [
-	['18-25 Years', 1], 
-	['26-35 Years', 2], 
-	['36-45 Years', 1], 
-	['Over 45', 0]
-	] ;
-
-    Highcharts.chart('sites', {
-        
-        chart: {
-        backgroundColor: '#1BBC49',
-      plotBackgroundColor: '#1BBC49',
-              plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie',
-        options3d: {
-            enabled: true,
-            alpha: 45
-        }
-    },
-    title: {
-        text: 'Studies by Sampling sites',
-        style: {"color": "#FFFFFF", 
-                "fontSize": "25px",
-                "fontWeight": 'bold'}
-    },
-    subtitle: {
-        text: ''
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
-            },
-            showInLegend: true,
-            innerSize: 100,
-            depth: 45
-        }
-    },
-    series: [{
-            name: 'Body site',
-            data: age
-    }]
-    });
-</script>
 
 <script>
 var outbreaks = [
   [1960, 1],
+  [1962, 1],
+  [1965, 2],
+  [1968, 3],
   [1970, 1],
   [1980, 2],
   [1990, 3],
@@ -232,7 +90,7 @@ caption: {
 },
 
 title: {
-    text: 'Time line of Viral outbreaks',
+    text: 'Time line of Viral outbreaks/Studies',
     style: {"color": "#FFFFFF", 
                 "fontSize": "25px",
                 "fontWeight": 'bold'}
@@ -290,7 +148,6 @@ yAxis: {
         text: null
     },
     labels: {
-        format: '{value}',
         style: {"color": "#FFFFFF"},
 
     }
@@ -327,28 +184,28 @@ series: [{
 </script>
 
 <script>
-	var age = [
-	['18-25 Years', 1], 
-	['26-35 Years', 2], 
-	['36-45 Years', 1], 
-	['Over 45', 0]
+	var diseases = [
+	['Ebola', 10], 
+	['Yellow fever', 4], 
+	['Maburg', 5], 
+	['Chikugunya', 3],
+    ['Dengue', 3],
 	] ;
 
     Highcharts.chart('disease', {
         
-        chart: {
-backgroundColor: 'orange',
-      plotBackgroundColor: 'orange',
-            plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie',
-        options3d: {
+    chart: {
+    backgroundColor: '#D38DFA', //#3EF0D2
+    plotBackgroundColor: '#D38DFA',
+    plotShadow: false,
+    type: 'pie',
+    options3d: {
             enabled: true,
             alpha: 45
         }
     },
     title: {
-        text: 'Studies by Sampling sites',
+        text: 'Studies by disease',
         style: {"color": "#FFFFFF", 
                 "fontSize": "25px",
                 "fontWeight": 'bold'}
@@ -361,7 +218,15 @@ backgroundColor: 'orange',
             allowPointSelect: true,
             cursor: 'pointer',
             dataLabels: {
-                enabled: false
+                enabled: false,
+                formatter:function () { 
+                    var total = 0, percentage; 
+                    $.each(this.series.data, function() { 
+                    total+=this.y; 
+                    }); 
+                    percentage=((this.y/total)*100).toFixed(1); 
+                    return this.point.name+' '+percentage+'%'; 
+        },
             },
             showInLegend: true,
             innerSize: 100,
@@ -369,128 +234,177 @@ backgroundColor: 'orange',
         }
     },
     series: [{
-            name: 'Body site',
-            data: age
+            name: 'Disease',
+            data: diseases
+    }]
+    });
+</script>
+
+
+<script>
+    var sites = [
+    ['Kibaale', 10], 
+    ['Kampala fever', 4], 
+    ['Kasese', 5], 
+    ['Mukono', 3],
+    ['Kabale', 3],
+    ['Gulu', 10], 
+    ['Bundibugyo', 4], 
+    ['Kalangala', 5], 
+    ['Buvuma', 3],
+    ['Wakiso', 3],
+    ] ;
+
+    Highcharts.chart('sites', {
+        
+    chart: {
+    backgroundColor: '#F7DD74', //#3EF0D2
+    plotBackgroundColor: '#F7DD74',
+    plotShadow: false,
+    type: 'column'
+    },
+    title: {
+        text: 'Studies by sampling locations',
+        style: {"color": "#FFFFFF", 
+                "fontSize": "25px",
+                "fontWeight": 'bold'}
+    },
+    subtitle: {
+        text: ''
+    },
+
+     yAxis: {
+        title: {
+            enabled: true,
+            text: 'Number of outbreaks/Studies',
+            style: {
+                fontWeight: 'normal'
+            }
+        }
+    },
+
+    xAxis: {
+        type: 'category',
+        labels: {
+          rotation: -90,
+          style: {
+                  fontSize: '13px',
+                  fontFamily: 'Verdana, sans-serif'
+               },
+          }
+     },
+    series: [{
+            name: 'Sampling locations',
+            data: sites
     }]
     });
 </script>
 
 <script>
-    var outbreaks = [
-      [1960, 1],
-      [1970, 1],
-      [1980, 2],
-      [1990, 3],
-      [2000, 5],
-      [2010, 4],
-      [2020, 6]
+    var country = [
+    ['Uganda', 7], 
+    ['Kenya', 4], 
+    ['Tanzania', 5], 
+    ['DRC', 3],
+    ['South Sudan', 3]
     ];
-    
-    Highcharts.chart('host', {
-    
+    Highcharts.chart('country', {    
     chart: {
-        type: 'area',
-        zoomType: 'x',
-        panning: true,
-        panKey: 'shift',
-        backgroundColor: '#1BBC49',
-        plotBackgroundColor: '#1BBC49',
-        scrollablePlotArea: {
-            minWidth: 600
+    backgroundColor: '#F7DD74', //#3EF0D2
+    plotBackgroundColor: '#F7DD74',
+    plotShadow: false,
+    type: 'pie',
+    options3d: {
+            enabled: true,
+            alpha: 45
         }
     },
-    
-    caption: {
-        text: ''
-    },
-    
     title: {
-        text: 'Studies by Host organism',
+        text: 'Studies by country',
         style: {"color": "#FFFFFF", 
                 "fontSize": "25px",
                 "fontWeight": 'bold'}
     },
-    
-    accessibility: {
-        description: 'Image description:'
+    subtitle: {
+        text: ''
     },
-    
-    credits: {
-        enabled: false
-    },
-    
-    annotations: [{
-        labelOptions: {
-            backgroundColor: 'rgba(255,255,255,0.5)',
-            verticalAlign: 'top',
-            y: 15
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false,
+                formatter:function () { 
+                    var total = 0, percentage; 
+                    $.each(this.series.data, function() { 
+                    total+=this.y; 
+                    }); 
+                    percentage=((this.y/total)*100).toFixed(1); 
+                    return this.point.name+' '+percentage+'%'; 
         },
-    }, 
-    {
-        labelOptions: {
-            shape: 'connector',
-            align: 'right',
-            justify: false,
-            crop: true,
-            style: {
-                fontSize: '0.8em',
-                textOutline: '1px white'
-            }
-        }
-    }],
-    
-    xAxis: {
-        labels: {
-            format: '{value}'
-        },
-        minRange: 5,
-        title: {
-            text: 'Year'
-        },
-        accessibility: {
-            rangeDescription: 'Range: 0 to 10 years.'
+            },
+            showInLegend: true,
+            innerSize: 100,
+            depth: 45
         }
     },
-    
-    yAxis: {
-        startOnTick: true,
-        endOnTick: false,
-        maxPadding: 0.35,
-        title: {
-            text: null
-        },
-        labels: {
-            format: '{value}'
-        }
-    },
-    
-    tooltip: {
-        headerFormat: 'Year: {point.x} <br>',
-        pointFormat: 'Studies: {point.y} ',
-        shared: true
-    },
-    
-    legend: {
-        enabled: false
-    },
-    
     series: [{
-        accessibility: {
-            keyboardNavigation: {
-                enabled: false
-            }
-        },
-        data: outbreaks,
-        lineColor: Highcharts.getOptions().colors[1],
-        color: Highcharts.getOptions().colors[2],
-        fillOpacity: 0.5,
-        name: 'Elevation',
-        marker: {
-            enabled: false
-        },
-        threshold: null
+            name: 'country',
+            data: country
     }]
-    
     });
-    </script>
+</script>
+
+<script>
+    var host = [
+    ['Mosquitoes', 7], 
+    ['Ticks', 4], 
+    ['Non-Human primate', 5], 
+    ];
+    Highcharts.chart('host', {    
+    chart: {
+    backgroundColor: '#D38DFA', //#3EF0D2
+    plotBackgroundColor: '#D38DFA',
+    plotShadow: false,
+    type: 'pie',
+    options3d: {
+            enabled: true,
+            alpha: 45
+        }
+    },
+    title: {
+        text: 'Outbreaks by host',
+        style: {"color": "#FFFFFF", 
+                "fontSize": "25px",
+                "fontWeight": 'bold'}
+    },
+    subtitle: {
+        text: ''
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false,
+                formatter:function () { 
+                    var total = 0, percentage; 
+                    $.each(this.series.data, function() { 
+                    total+=this.y; 
+                    }); 
+                    percentage=((this.y/total)*100).toFixed(1); 
+                    return this.point.name+' '+percentage+'%'; 
+        },
+            },
+            showInLegend: true,
+            innerSize: 100,
+            depth: 45
+        }
+    },
+    series: [{
+            name: 'host',
+            data: host
+    }]
+    });
+</script>
 {% endblock %}
